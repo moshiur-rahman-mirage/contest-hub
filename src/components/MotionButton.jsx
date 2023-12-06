@@ -6,8 +6,9 @@ import { Button, Typography } from "@mui/material";
 const MotionButton = ({ to }) => {
   return (
     <motion.div
-      whileHover={{ scaleX: 1 }}
-      style={{ position: "relative", display: "inline-block" }}
+      // whileHover={{ scaleX: 1, background:"#C5FFF8"}}
+
+      // style={{  position: "relative", display: "inline-block"}}
     >
       <Button
         sx={{
@@ -37,7 +38,7 @@ const MotionButton = ({ to }) => {
           </Typography>
         </Link>
       </Button>
-      <motion.div
+      {/* <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         exit={{ scaleX: 0 }}
@@ -51,7 +52,7 @@ const MotionButton = ({ to }) => {
           right: 0,
           transformOrigin: "bottom",
         }}
-      />
+      /> */}
     </motion.div>
   );
 };
