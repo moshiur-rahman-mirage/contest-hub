@@ -2,8 +2,8 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div className='bg-green'>
-            <h1>Home Page</h1>
+        <div>
+            Home
         </div>
     );
 };
