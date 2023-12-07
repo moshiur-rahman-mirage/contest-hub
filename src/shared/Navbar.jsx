@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigation } from "react-router-dom";
 import { motion } from "framer-motion";
-const navitems = ["Home", "Contacts", "About Us", "Leader Board"];
+const navitems = ["Home", "All Contests", "About Us", "Leader Board"];
 
 const divVariants = {
   rest: {
@@ -69,7 +69,7 @@ const Navbar = () => {
     initial={{ backgroundColor: 'transparent' }}
     animate={{ 
       backgroundColor: scrolling ? '#303031' : 'transparent' ,
-      color: scrolling ? '#fff' : '#000' 
+      color: scrolling ? '#fff' : '#fff' 
     }}
     transition={{ duration: 0.5 }}
     >

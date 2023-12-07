@@ -1,6 +1,8 @@
 import React from "react";
 import AnimatedText from "../../component/AnimatedText";
 import banner1 from "../../../public/benner2.jpg";
+import { Link as ScrollLink } from 'react-scroll';
+import { LuArrowDown } from "react-icons/lu"
 const Hero = () => {
   return (
     <div className="carousel w-full min-h-screen rounded-xl">
@@ -12,15 +14,35 @@ const Hero = () => {
 ]"
         >
           <div className=" text-white  space-y-7 w-1/2">
-            <AnimatedText varitants="quote" className="text-6xl  w-1/2 font-semibold uppercase" text="Ignite Your Inner Creativity"/>
-            <AnimatedText varitants="quote" className="text-4xl " text="Join A Contest Now!"/>
+            <AnimatedText
+              varitants="quote"
+              className="text-2xl md:text-6xl flex-wrap w-3/4  md:w-1/2 font-semibold uppercase whitespace-pre-wrap"
+              text="Ignite Your Inner Creativity"
+            />
+            <AnimatedText
+              varitants="quote"
+              className="text-4xl "
+              text="Join A Contest Now!"
+            />
+            <button className="btn  btn-ghost border-lime-50 rounded-r-full rounded-l-full w-60">
+              {" "}
+              <ScrollLink
+              className="flex items-center gap-10 text-lg justify-center"
+                to="contesttype"
+                spy={true}
+                smooth={true}
+                offset={-70} // Adjust the offset based on your layout (e.g., navbar height)
+                duration={500}
+              >
+                100+ Contests
+                <LuArrowDown />
+              </ScrollLink>
               
-           
-            <div>
-            </div>
+            </button>
+
+            <div></div>
           </div>
         </div>
-
       </div>
     </div>
   );
