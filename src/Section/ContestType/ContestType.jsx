@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const ContestType = () => {
   const axiosPublic = useAxiosPublic();
-  const [category, setCategory] = useState('Gaming Contest');
+  const [category, setCategory] = useState("Gaming Contest");
   const [loading, setLoading] = useState(true);
   const [cardData, setCardData] = useState(null);
 
@@ -24,10 +24,10 @@ const ContestType = () => {
     enabled: !category,
     queryFn: async () => {
       const res = await axiosPublic.get(contestUrl);
-      console.log(res)
+      console.log(res);
       setCardData(res.data);
       setLoading(false);
-      return res.data
+      return res.data;
     },
   });
   // console.log(cardData);
@@ -52,9 +52,9 @@ const ContestType = () => {
   };
 
   const handleCategoryChange = (title) => {
-    console.log(title)
+    console.log(title);
     setLoading(true);
-    setCardData(null)
+    setCardData(null);
     setCategory(title);
     refetch();
   };
@@ -140,7 +140,7 @@ const ContestType = () => {
           </ul>
         </div>
         <div>
-          {loading && cardData?.contest_category!==category ? (
+          {loading && cardData?.contest_category !== category ? (
             <p>Loading...</p>
           ) : (
             <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-2 grid-cols-1">

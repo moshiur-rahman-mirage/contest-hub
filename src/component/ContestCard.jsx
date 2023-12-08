@@ -1,8 +1,25 @@
 import React from "react";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+
+const cardhover = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 0.3,
+      // staggerChildren: 1,
+    },
+  },
+};
+
 
 const ContestCard = ({ contest }) => {
   return (
-    <div>
+    <motion.div
+    whileHover={{}}
+    >
       <div className="card rounded-none w-96 bg-base-500 shadow-lg">
         <figure>
           <img src={contest.contest_image} alt="Shoes" />
@@ -16,7 +33,7 @@ const ContestCard = ({ contest }) => {
 
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 const navitems = ["Home", "All Contests", "About Us", "Leader Board"];
 
 const divVariants = {
@@ -18,6 +18,8 @@ const divVariants = {
     borderBottom: "2px solid #ff0000", // Set the border style on hover
   },
 };
+
+
 
 const MenuButton = ({ item, className = "" }) => {
   return (
@@ -73,7 +75,7 @@ const Navbar = () => {
     }}
     transition={{ duration: 0.5 }}
     >
-      <div className="navbar-start my-[-80px]">
+      <div className="navbar-start my-[-90px] ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
