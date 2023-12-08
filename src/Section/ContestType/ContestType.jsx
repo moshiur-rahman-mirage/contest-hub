@@ -12,8 +12,10 @@ const ContestType = () => {
   const [loading, setLoading] = useState(true);
   const [cardData, setCardData] = useState(null);
 
-  const contestUrl = `/contest?contest_category=${category}&size=4`;
+  const contestUrl = `/contest?contest_category=${category}&size=5`;
   console.log(contestUrl);
+ 
+ // TODO : FIX API CALL ISSUE, SHOWING CORRECT DATA ON SECOND CLICK.
   const {
     isLoading,
     error,
@@ -73,12 +75,13 @@ const ContestType = () => {
         />
         <div className="flex items-center justify-center gap-5">
           <ul className="flex items-center justify-center gap-5 pb-10">
-            <li>
+            <li className=" border p-2 bg-lime-400 rounded-sm">
               <button
+              
                 onClick={() => {
                   handleCategoryChange("Article Writing");
                 }}
-                className="mr-4 text-xl capitalize opacity-80 relative group"
+                className="mx-4 text-xl capitalize opacity-80 relative group"
               >
                 Article Writing
                 <span
@@ -89,7 +92,7 @@ const ContestType = () => {
                 </span>
               </button>{" "}
             </li>
-            <li>
+            <li className=" border p-2 bg-cyan-300 rounded-sm">
               <button
                 onClick={() => {
                   handleCategoryChange("Gaming Contest");
@@ -105,7 +108,7 @@ const ContestType = () => {
                 </span>
               </button>{" "}
             </li>
-            <li>
+            <li className=" border p-2 bg-amber-300 rounded-sm">
               <button
                 onClick={() => {
                   handleCategoryChange("Business Contest");
@@ -121,7 +124,7 @@ const ContestType = () => {
                 </span>
               </button>
             </li>
-            <li>
+            <li className=" border p-2 bg-purple-300 rounded-sm">
               <button
                 onClick={() => {
                   handleCategoryChange("Medical Contest");
