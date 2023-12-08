@@ -2,9 +2,12 @@ import React from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import "./Card.css";
-const ContestCard = ({ contest }) => {
+import contest_image from "../../public/banner1.jpg"
+import { Link } from "react-router-dom";
+const ContestCard = ({ open, contest,color }) => {
   const {
-    contest_image,
+    _id,
+    // contest_image,
     contest_creator,
     contest_category,
     contest_deadline,
@@ -16,7 +19,7 @@ const ContestCard = ({ contest }) => {
     contest_status,
   } = contest;
   return (
-    <motion.div className=" listing bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" onClick={open} whileHover={{ scale: 1.01 }}>
+    <motion.div onClick={open} className=" listing bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" onClick={open} whileHover={{ scale: 1.01 }}>
       <div className="absolute left-0 top-0 w-full h-full bg-white rounded-lg overflow-hidden">
         <div className="w-full h-[65%] overflow-hidden ">
           <img
@@ -26,7 +29,7 @@ const ContestCard = ({ contest }) => {
           />
         </div>
         <div className="flex flex-col relative justify-evenly py-0 px-4">
-          <div className="absolute text-xs right-2 top-2 bg-green-200 py-1.5 px-2.5 rounded-md ">
+          <div className={`absolute text-xs right-2 top-2 ${color} py-1.5 px-2.5 rounded-md `}>
             {contest_category}
           </div>
           <div className="my-1.5 mx-0 top-2 flex items-center">

@@ -10,7 +10,7 @@ const Overlay = ({ children, close }) => {
 
   return (
     <motion.div
-      className="overlay"
+      className="overlay fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-100 flex lg:overflow-y-scroll lg:justify-center lg:items-start lg:p-10 md:items-center"
       onClick={close}
       variants={variants}
       initial={"closed"}
