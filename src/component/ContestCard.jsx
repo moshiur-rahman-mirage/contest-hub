@@ -24,7 +24,7 @@ const ContestCard = ({ open, contest,color }) => {
         <div className="w-full h-[65%] overflow-hidden ">
           <img
             className="w-full h-full object-cover"
-            alt="real estate mansion"
+            alt="Contest Card"
             src={contest_image}
           />
         </div>

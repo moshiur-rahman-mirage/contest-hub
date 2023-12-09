@@ -46,7 +46,7 @@ const Modal = ({ contest, close }) => {
     >
       <motion.img
         className="modal__image"
-        alt="real estate mansion"
+        alt="Contest"
         src={contest_image}
         variants={imageVariants}
       ></motion.img>

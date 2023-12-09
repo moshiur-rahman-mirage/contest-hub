@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useNavigation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigation } from "react-router-dom";
 import { motion, useScroll, useSpring } from "framer-motion";
-const navitems = ["Home", "All Contests", "About Us", "Leader Board"];
+const navitems = ["Home", "All Contests", "About", "Leader Board"];
 
 const divVariants = {
   rest: {
@@ -10,7 +10,7 @@ const divVariants = {
     transition: {
       duration: 0.3,
       delay: 0.1,
-      ease: "ease-out",
+      // ease: "ease-out",
     },
   },
   hover: {
@@ -49,7 +49,7 @@ const MenuButton = ({ item, className = "" }) => {
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
-
+  const location = useLocation();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -66,11 +66,14 @@ const Navbar = () => {
     };
   }, []);
 
+  const isHomePage = location.pathname === "/" || location.pathname==='/Home'
+
   return (
     <motion.div className="navbar px-10 fixed z-10"
-    initial={{ backgroundColor: 'transparent' }}
+    initial={{ backgroundColor: 'transparent'}}
     animate={{ 
-      backgroundColor: scrolling ? '#303031' : 'transparent' ,
+      // backgroundColor: scrolling ? '#303031' : 'transparent' ,
+      backgroundColor: scrolling ? "#303031" : isHomePage ? "transparent" : "#303031",
       color: scrolling ? '#fff' : '#fff' 
     }}
     transition={{ duration: 0.5 }}
