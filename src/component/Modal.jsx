@@ -1,23 +1,23 @@
 import React from "react";
 import "./Modal.css";
-
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { motion } from "framer-motion";
 
-const Modal = ({ data, close }) => {
+const Modal = ({ contest, close }) => {
   const {
-    imageUrl,
-    price,
-    address,
-    description,
-    numBedroom,
-    numWashrooms,
-    livingSpace,
-  } = data;
+    _id,
+     contest_image,
+    contest_description,
+    contest_name,
+  
+    contest_price,
+
+  } = contest;
 
   const modalVariants = {
     open: {
       opacity: 1,
+      backgroundColor: "rgba(255,255,255,0.7)",
       transition: { staggerChildren: 0.5, delayChildren: 0.2 },
     },
     closed: { opacity: 0 },
@@ -47,21 +47,22 @@ const Modal = ({ data, close }) => {
       <motion.img
         className="modal__image"
         alt="real estate mansion"
-        src={imageUrl}
+        src={contest_image}
         variants={imageVariants}
       ></motion.img>
+      
       <motion.div className="modal__info" variants={modalInfoVariants}>
         <motion.div className="modal__row" variants={modalRowVariants}>
-          <span className="modal__price">{price}</span>
+          <span className="modal__price">{contest_price}</span>
         </motion.div>
         <motion.div className="modal__row" variants={modalRowVariants}>
-          <span className="modal__address">{address}</span>
+          <span className="modal__address">{contest_name}</span>
         </motion.div>
         <motion.div
           className="modal__description-wrapper"
           variants={modalRowVariants}
         >
-          <p className="modal__description">{description}</p>
+          <p className="modal__description">{contest_description}</p>
         </motion.div>
         <motion.button
           className="modal__close-wrapper"

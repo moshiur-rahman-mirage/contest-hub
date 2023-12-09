@@ -15,7 +15,6 @@ const ContestType = () => {
   const [cardData, setCardData] = useState(null);
   const [color, setColor] = useState("bg-lime-400");
   const contestUrl = `/contest?contest_category=${category}&size=5`;
-  
 
   const [open, setOpen] = useState(false);
 
@@ -26,7 +25,6 @@ const ContestType = () => {
   const closeModal = () => {
     setOpen(false);
   };
-
 
   const fetchData = async () => {
     setLoading(true);
@@ -186,27 +184,28 @@ const ContestType = () => {
             <div className="grid gap-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
               {cardData.map((contest) => {
                 return (
-                  <ContestCard
-                    key={contest._id}
-                    open={openModal}
-                    contest={contest}
-                    color={color}
-                    
-                    
-                  />
+                  <>
+                    <ContestCard
+                      key={contest._id}
+                      open={openModal}
+                      contest={contest}
+                      color={color}
+                    />
+
+                    <AnimatePresence>
+                      {open && (
+                        <Overlay close={closeModal}>
+                          <Modal contest={contest} close={closeModal} />
+                        </Overlay>
+                      )}
+                    </AnimatePresence>
+                  </>
                 );
               })}
             </div>
           )}
         </div>
       </div>
-      {/* <AnimatePresence>
-        {open && (
-          <Overlay close={closeModal}>
-            <Modal data={data} close={closeModal} />
-          </Overlay>
-        )}
-      </AnimatePresence> */}
     </div>
   );
 };

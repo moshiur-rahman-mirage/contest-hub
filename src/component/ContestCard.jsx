@@ -2,12 +2,12 @@ import React from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import "./Card.css";
-import contest_image from "../../public/banner1.jpg"
+//import contest_image from "../../public/banner1.jpg"
 import { Link } from "react-router-dom";
 const ContestCard = ({ open, contest,color }) => {
   const {
     _id,
-    // contest_image,
+     contest_image,
     contest_creator,
     contest_category,
     contest_deadline,
