@@ -19,7 +19,7 @@ const ContestCard = ({ open, contest,color }) => {
     contest_status,
   } = contest;
   return (
-    <motion.div onClick={open} className=" listing bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" onClick={open} whileHover={{ scale: 1.01 }}>
+    <motion.div onClick={open} className=" listing bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" whileHover={{ scale: 1.01 }}>
       <div className="absolute left-0 top-0 w-full h-full bg-white rounded-lg overflow-hidden">
         <div className="w-full h-[65%] overflow-hidden ">
           <img

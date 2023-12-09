@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import AnimatedNumbers from "../../component/AnimatedNumbers";
 import InViewParagraph from "../../component/InViewParagraph";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
-import ContestCard from "../../component/ContestCard";
-import { Link } from "react-router-dom";
 import { Circles } from "react-loader-spinner";
 import { AnimatePresence } from "framer-motion";
 import Overlay from "../../component/Overlay";
@@ -29,8 +26,7 @@ const ContestType = () => {
     setOpen(false);
   };
 
-  // TODO : FIX API CALL ISSUE, SHOWING CORRECT DATA ON SECOND CLICK.
-  // TOTO : CARD ANIMATION INVIEW NEEDED.
+
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -187,7 +183,7 @@ const ContestType = () => {
             </>
           ) : (
             <div className="grid gap-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-              {cardData.map((contest) => {
+              {/* {cardData.map((contest) => {
                 return (
                   <ContestCard
                     key={contest._id}
@@ -198,18 +194,18 @@ const ContestType = () => {
                     
                   />
                 );
-              })}
+              })} */}
             </div>
           )}
         </div>
       </div>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {open && (
           <Overlay close={closeModal}>
             <Modal data={data} close={closeModal} />
           </Overlay>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 };
