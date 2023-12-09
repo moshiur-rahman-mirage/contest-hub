@@ -34,10 +34,11 @@ const ContestType = () => {
       setCardData(fetchedData);
       console.log(fetchedData);
       console.log("here");
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      setLoading(false);
+      
     }
   };
 
@@ -75,7 +76,7 @@ const ContestType = () => {
     setColor(color);
     console.log("inside handleCategoryChange");
   };
-  console.log(color);
+
   return (
     <div id="contesttype" className="bg-[#EEF1F4]">
       <div className="grid place-items-center  capitalize">
