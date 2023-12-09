@@ -6,6 +6,7 @@ import { Circles } from "react-loader-spinner";
 import { AnimatePresence } from "framer-motion";
 import Overlay from "../../component/Overlay";
 import Modal from "../../component/Modal";
+import ContestCard from "../../component/ContestCard";
 
 const ContestType = () => {
   const axiosPublic = useAxiosPublic();
@@ -183,7 +184,7 @@ const ContestType = () => {
             </>
           ) : (
             <div className="grid gap-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-              {/* {cardData.map((contest) => {
+              {cardData.map((contest) => {
                 return (
                   <ContestCard
                     key={contest._id}
@@ -194,7 +195,7 @@ const ContestType = () => {
                     
                   />
                 );
-              })} */}
+              })}
             </div>
           )}
         </div>
