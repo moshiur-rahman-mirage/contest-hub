@@ -15,13 +15,13 @@ const ContestType = () => {
   const [cardData, setCardData] = useState(null);
   const [color, setColor] = useState("bg-lime-400");
   const contestUrl = `/contest?contest_category=${category}&size=5`;
-
+  const [selectedContest,setSelectedContest]=useState([])
   const [open, setOpen] = useState(false);
 
   const openModal = () => {
     setOpen(true);
   };
-
+console.log(selectedContest)
   const closeModal = () => {
     setOpen(false);
   };
@@ -76,6 +76,12 @@ const ContestType = () => {
     setColor(color);
     console.log("inside handleCategoryChange");
   };
+
+  const handleCardClick=(contest)=>{
+    console.log('clicked')
+    console.log(contest)
+    setSelectedContest(contest)
+  }
 
   return (
     <div id="contesttype" className="bg-[#EEF1F4]">
@@ -191,12 +197,14 @@ const ContestType = () => {
                       open={openModal}
                       contest={contest}
                       color={color}
+                      onClick={handleCardClick}
+
                     />
 
                     <AnimatePresence>
                       {open && (
                         <Overlay close={closeModal}>
-                          <Modal contest={contest} close={closeModal} />
+                          <Modal contest={selectedContest} close={closeModal} />
                         </Overlay>
                       )}
                     </AnimatePresence>

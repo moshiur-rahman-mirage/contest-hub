@@ -4,7 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import "./Card.css";
 //import contest_image from "../../public/banner1.jpg"
 import { Link } from "react-router-dom";
-const ContestCard = ({ open, contest,color }) => {
+const ContestCard = ({ open, contest,color,onClick }) => {
   const {
     _id,
      contest_image,
@@ -20,7 +20,7 @@ const ContestCard = ({ open, contest,color }) => {
   } = contest;
   return (
     <motion.div onClick={open} className=" listing bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" whileHover={{ scale: 1.01 }}>
-      <div className="absolute left-0 top-0 w-full h-full bg-white rounded-lg overflow-hidden">
+      <div onClick={() => onClick(contest)} className="absolute left-0 top-0 w-full h-full bg-white rounded-lg overflow-hidden">
         <div className="w-full h-[65%] overflow-hidden ">
           <img
             className="w-full h-full object-cover"

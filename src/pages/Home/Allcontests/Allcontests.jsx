@@ -14,7 +14,7 @@ const Allcontests = () => {
   const [category, setCategory] = useState("Article Writing");
   const contestUrl = `/contest?contest_category=${category}`;
   const [open, setOpen] = useState(false);
-
+  const [selectedContest,setSelectedContest]=useState([])
   const openModal = () => {
     setOpen(true);
   };
@@ -31,6 +31,12 @@ const Allcontests = () => {
     setColor(color);
     console.log("inside handleCategoryChange");
   };
+
+  const handleCardClick=(contest)=>{
+    console.log('clicked')
+    console.log(contest)
+    setSelectedContest(contest)
+  }
 
   const fetchData = async () => {
     setLoading(true);
@@ -150,12 +156,13 @@ const Allcontests = () => {
                       open={openModal}
                       contest={contest}
                       color={color}
+                      onClick={handleCardClick}
                     />
                     <AnimatePresence>
                       {open && (
                         <Overlay close={closeModal}>
                             {console.log(contest,'here')}
-                          <Modal contest={contest} close={closeModal} />
+                          <Modal contest={selectedContest} close={closeModal} />
                         </Overlay>
                       )}
                     </AnimatePresence>
