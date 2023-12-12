@@ -22,9 +22,8 @@ const Allcontests = () => {
   const closeModal = () => {
     setOpen(false);
   };
+
   const handleCategoryChange = (color, title) => {
-    console.log("alskdfj");
-    console.log(title);
     setLoading(true);
     setCardData(null);
     setCategory(title);
@@ -44,8 +43,6 @@ const Allcontests = () => {
       const response = await axiosPublic.get(contestUrl);
       const fetchedData = response.data;
       setCardData(fetchedData);
-      console.log(fetchedData);
-      console.log("here");
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -172,11 +169,6 @@ const Allcontests = () => {
             </div>
           )}
         </div>
-
-
-
-
-
     </div>
   );
 };

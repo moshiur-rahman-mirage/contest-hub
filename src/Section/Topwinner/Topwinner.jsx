@@ -1,16 +1,77 @@
-import React from 'react';
-import AnimatedText from '../../component/AnimatedText';
+import React, { useEffect, useState } from "react";
+import AnimatedText from "../../component/AnimatedText";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Circles } from "react-loader-spinner";
+import UserCard from "../../component/Usercard";
+
 
 const Topwinner = () => {
-    return (
-        <div className="bg-[#EEF1F4] grid place-items-center">
-           <AnimatedText
-              varitants="signelWord"
-              className="text-xl lg:text-5xl font-bold my-10 md:text-4xl "
-              text="FIND OUR TOP WINNER"
-            />
-        </div>
-    );
+  const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
+  const topwinner = `users/winner/top`;
+  const [cardData, setCardData] = useState(null);
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const response = await axiosPublic.get(topwinner);
+      const fetchedData = response.data;
+      setCardData(fetchedData);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [axiosPublic]);
+
+
+
+  return (
+    <div className="bg-[#EEF1F4] grid place-items-center">
+      <AnimatedText
+        varitants="signelWord"
+        className="text-xl lg:text-5xl font-bold my-10 md:text-4xl "
+        text="FIND OUR TOP WINNER"
+      />
+      <div className="grid place-items-center">
+        {loading ? (
+          <>
+            <div className="min-h-[400]">
+              <Circles
+                height="200"
+                width="200"
+                color="#4fa94d"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="grid  grid-cols-1">
+            {/* {cardData.map((user) => {
+              return (
+                <>
+                  <UserCard
+                    // key={user._id}
+                    // user={user}
+                    
+                  />
+                  
+                </>
+              );
+            })} */}
+            <UserCard/>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Topwinner;

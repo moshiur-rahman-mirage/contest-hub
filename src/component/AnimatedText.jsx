@@ -47,7 +47,7 @@ const AnimatedText = ({ variants, text, className = "" }) => {
     <div className="">
       <motion.h1
         className={` w-full text-dark  ${className}`}
-        variants={quote}
+        variants={variants}
         initial="initial"
         animate="animate"
       >
@@ -56,9 +56,9 @@ const AnimatedText = ({ variants, text, className = "" }) => {
             <motion.span
               key={word + "-" + index}
               className=""
-              variants={quote}
-              // initial="initial"
-              // animate="animate"
+              variants={variants}
+              initial="initial"
+              animate="animate"
             >
               {word}&nbsp;
             </motion.span>

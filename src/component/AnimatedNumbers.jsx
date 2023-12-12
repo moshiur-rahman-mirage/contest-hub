@@ -6,7 +6,7 @@ const AnimatedNumbers = ({ value }) => {
     const ref = useRef();
   
     const motionValue = useMotionValue(0);
-    const springValue = useSpring(motionValue, { duration: 1000 });
+    const springValue = useSpring(motionValue, { duration: 2500 });
     const isInView = useInView(ref, { once: true });
   
     useEffect(() => {
