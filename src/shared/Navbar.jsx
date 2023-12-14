@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigation } from "react-router-dom";
 import { motion, useScroll, useSpring } from "framer-motion";
+import { AuthContext } from "../providers/AuthProvider";
 const navitems = ["Home", "All Contests", "About", "Leader Board"];
 
 const divVariants = {
@@ -19,8 +20,6 @@ const divVariants = {
   },
 };
 
-
-
 const MenuButton = ({ item, className = "" }) => {
   return (
     <>
@@ -37,7 +36,7 @@ const MenuButton = ({ item, className = "" }) => {
         initial="rest"
       >
         <NavLink
-          className={`${className} mx-10 text-xl uppercase`}
+          className={`${className} md:mx-10 mx-2 md:text-xl text-xs text-left uppercase`}
           to={`${item}`}
         >
           {item}
@@ -48,6 +47,7 @@ const MenuButton = ({ item, className = "" }) => {
 };
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
   const [scrolling, setScrolling] = useState(false);
   const location = useLocation();
   useEffect(() => {
@@ -66,17 +66,22 @@ const Navbar = () => {
     };
   }, []);
 
-  const isHomePage = location.pathname === "/" || location.pathname==='/Home'
+  const isHomePage = location.pathname === "/" || location.pathname === "/Home";
 
   return (
-    <motion.div className="navbar px-10 fixed z-10"
-    initial={{ backgroundColor: 'transparent'}}
-    animate={{ 
-      // backgroundColor: scrolling ? '#303031' : 'transparent' ,
-      backgroundColor: scrolling ? "#303031" : isHomePage ? "transparent" : "#303031",
-      color: scrolling ? '#fff' : '#fff' 
-    }}
-    transition={{ duration: 0.5 }}
+    <motion.div
+      className="navbar px-10 fixed z-10"
+      initial={{ backgroundColor: "transparent" }}
+      animate={{
+        // backgroundColor: scrolling ? '#303031' : 'transparent' ,
+        backgroundColor: scrolling
+          ? "#303031"
+          : isHomePage
+          ? "transparent"
+          : "#303031",
+        color: scrolling ? "#fff" : "#fff",
+      }}
+      transition={{ duration: 0.5 }}
     >
       <div className="navbar-start my-[-90px] ">
         <div className="dropdown">
@@ -98,7 +103,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#303031] rounded-box w-52"
           >
             {navitems.map((item) => {
               return (
@@ -119,7 +124,7 @@ const Navbar = () => {
           {navitems.map((item) => {
             return (
               <MenuButton
-                className="uppercase text-2xl "
+                className="uppercase md:text-2xl text-sm "
                 key={item}
                 item={item}
               />
@@ -128,31 +133,40 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end ">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+        {user ? (
+          <div className="dropdown dropdown-end ">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src={user.displayName}
+                />
+              </div>
             </div>
+            <ul
+              tabIndex={0}
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#303031] rounded-box w-52"
+            >
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+        ) : (
+          <Link
+            to="login"
+            className="btn btn-outline text-white md:mx-10 mx-2 md:text-xl text-xs text-left uppercase"
           >
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
+            Login
+          </Link>
+        )}
       </div>
     </motion.div>
   );
