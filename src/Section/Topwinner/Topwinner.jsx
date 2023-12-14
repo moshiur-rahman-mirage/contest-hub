@@ -3,6 +3,7 @@ import AnimatedText from "../../component/AnimatedText";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Circles } from "react-loader-spinner";
 import UserCard from "../../component/Usercard";
+import Winnercard from "../../component/Winnercard";
 
 
 const Topwinner = () => {
@@ -28,13 +29,13 @@ const Topwinner = () => {
     fetchData();
   }, [axiosPublic]);
 
-
+console.log(cardData,'users data')
 
   return (
     <div className="bg-[#EEF1F4] grid place-items-center">
       <AnimatedText
         varitants="signelWord"
-        className="text-xl lg:text-5xl font-bold my-10 md:text-4xl "
+        className="text-xl text-center lg:text-5xl font-bold my-10 md:text-4xl "
         text="FIND OUR TOP WINNER"
       />
       <div className="grid place-items-center">
@@ -53,20 +54,15 @@ const Topwinner = () => {
             </div>
           </>
         ) : (
-          <div className="grid  grid-cols-1">
-            {/* {cardData.map((user) => {
+          <div className="grid max-w-7xl gap-10 grid-cols-3">
+            {cardData.map((user) => {
               return (
                 <>
-                  <UserCard
-                    // key={user._id}
-                    // user={user}
-                    
-                  />
-                  
+                 <Winnercard key={user._id} user={user}/>
                 </>
               );
-            })} */}
-            <UserCard/>
+            })}
+            {/* <UserCard/> */}
           </div>
         )}
       </div>
