@@ -14,10 +14,10 @@ const Winnercard = (user) => {
   }
 
   return (
-    <div className="flex  items-center justify-center  h-[800px] cursor-pointer">
+    <div className="flex  items-center justify-center  h-[600px] cursor-pointer">
       <div
         className="flip-card w-[600px] h-[360px] rounded-md"
-        onClick={handleFlip}
+        onMouseEnter={handleFlip}
       >
         <motion.div
           className="flip-card-inner w-[100%] h-[100%]"

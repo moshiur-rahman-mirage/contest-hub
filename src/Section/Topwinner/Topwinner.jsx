@@ -35,7 +35,7 @@ console.log(cardData,'users data')
     <div className="bg-[#EEF1F4] grid place-items-center">
       <AnimatedText
         varitants="signelWord"
-        className="text-xl text-center lg:text-5xl font-bold my-10 md:text-4xl "
+        className="text-xl text-center lg:text-5xl font-bold mt-10 py-10 md:text-4xl "
         text="FIND OUR TOP WINNER"
       />
       <div className="grid place-items-center">
